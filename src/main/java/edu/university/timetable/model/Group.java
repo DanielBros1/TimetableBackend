@@ -34,12 +34,13 @@ public class Group {
     private int id;
 
 
-   @Column(name = "course_id")
-    private int courseId;
+   @ManyToOne
+   @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+   private Course course;
 
-
-   @Column(name = "teacher_id")
-    private int teacherId;
+   @ManyToOne
+   @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+   private Teacher teacher;
 
    @Column(name = "group_number")
     private int groupNumber;

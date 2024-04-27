@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface StudentGroupRepository extends JpaRepository<StudentGroup, Integer> {
 
-    @Query("SELECT sg FROM students_groups sg JOIN FETCH sg.courses")
-            List<StudentGroup> getAllStudentGroups();
+    @Query("SELECT sg FROM students_groups sg")
+    List<StudentGroup> getAllStudentGroups();
+
 }
+

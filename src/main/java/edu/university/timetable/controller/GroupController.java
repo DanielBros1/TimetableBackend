@@ -28,4 +28,8 @@ public class GroupController {
         return groupRepository.getGroupById(id);
     }
 
+    @GetMapping("/course/{courseId}")
+    public List<Group> getGroupByCourseId(@PathVariable("courseId") int courseId) {
+        return groupRepository.getGroupByCourseId(courseId);
+    }
 }

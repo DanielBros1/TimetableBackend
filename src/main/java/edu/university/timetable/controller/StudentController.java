@@ -4,15 +4,15 @@ import edu.university.timetable.model.Student;
 import edu.university.timetable.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
-@RequestMapping("/person-students")
-public class PersonStudentController {
+@RequestMapping("/students")
+public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
@@ -20,5 +20,10 @@ public class PersonStudentController {
     @GetMapping("")
     public List<Student> getStudentsWithPersonDetails() {
         return studentRepository.findStudentsWithPersonDetails();
+    }
+
+    @GetMapping("/{studentNumber}")
+    public Student getStudentByStudentNumber(@PathVariable("studentNumber") String studentNumber) {
+        return studentRepository.findByStudentNumber(studentNumber);
     }
 }

@@ -12,4 +12,8 @@ public interface StudentRepository extends JpaRepository<Student, String>{
 
     @Query("SELECT s FROM students s JOIN FETCH s.person")
     List<Student> findStudentsWithPersonDetails();
+
+    // Get student by student number
+    @Query("SELECT s FROM students s WHERE s.studentNumber = ?1")
+    Student findByStudentNumber(String studentNumber);
 }

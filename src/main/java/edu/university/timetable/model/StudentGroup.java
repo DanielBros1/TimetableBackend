@@ -29,23 +29,15 @@ public class StudentGroup {
     @Id
     private int id;
 
-//    @Column(name = "student_id")
-//    private String studentId;
-//
-//    @Column(name = "group_id")
-//    private int groupId;
+    // one student can exist in this table several times
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "student_number")
+    private Student student;
 
-    // one student can be in many groups
-    // one group can have many students
-
-    // many students to many groups
-    @ManyToMany
-    @JoinTable(
-            name = "students_groups",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id")
-    )
-    private List<Course> courses = new ArrayList<>();
+    // one group can exist in this table several times
+    @ManyToOne
+    @JoinColumn(name = "group_id", referencedColumnName = "id")
+    private Group group;
 
 
 }

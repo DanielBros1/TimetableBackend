@@ -22,6 +22,7 @@ public class Student {
      */
 
     @Id
+    @Column(name = "student_number")
     private String studentNumber;
 
     @OneToOne

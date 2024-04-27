@@ -7,22 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Repository
-@RequestMapping("/student-groups")
+@RestController
+@RequestMapping("/studentGroups")
 public class StudentGroupController {
 
     @Autowired
     private StudentGroupRepository studentGroupRepository;
 
-    @GetMapping("")
-    public int Test() {
-        return 1;
-    }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<StudentGroup> getAllStudentGroups() {
         return studentGroupRepository.getAllStudentGroups();
     }

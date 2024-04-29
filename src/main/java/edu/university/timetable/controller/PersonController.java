@@ -3,10 +3,7 @@ package edu.university.timetable.controller;
 
 import edu.university.timetable.model.Person;
 import edu.university.timetable.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +11,20 @@ import java.util.List;
 @RequestMapping("/persons")
 public class PersonController {
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    public PersonController(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     @GetMapping("")
     public List<Person> getAllPersons() {
         return personRepository.getAllPersons();
     }
 
+//    // add a new person
+//   @PostMapping("")
+//    public int addPerson(@RequestBody Person person) {
+//        return personRepository.addPerson(person);
+//    }
 }

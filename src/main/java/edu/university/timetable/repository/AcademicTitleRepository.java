@@ -11,8 +11,11 @@ import java.util.List;
 @Repository
 public class AcademicTitleRepository {
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+    final JdbcTemplate jdbcTemplate;
+
+    public AcademicTitleRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<AcademicTitle> getAllAcademicTitles() {
         return jdbcTemplate.query("SELECT id, title, salary FROM academic_titles",

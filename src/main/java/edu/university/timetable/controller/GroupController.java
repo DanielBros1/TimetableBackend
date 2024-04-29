@@ -3,7 +3,6 @@ package edu.university.timetable.controller;
 
 import edu.university.timetable.model.Group;
 import edu.university.timetable.repository.GroupRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,11 @@ import java.util.List;
 @RequestMapping("/groups")
 public class GroupController {
 
-    @Autowired
-    private GroupRepository groupRepository;
+    private final GroupRepository groupRepository;
+
+    public GroupController(GroupRepository groupRepository) {
+        this.groupRepository = groupRepository;
+    }
 
     @GetMapping("")
     public List<Group> getAllGroups() {

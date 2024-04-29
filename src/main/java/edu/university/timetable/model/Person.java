@@ -8,33 +8,9 @@ import lombok.Getter;
  * Annotation @Data is necessary to generate setters in this class which are used to set values
  * in the object of this class. Without setters, all objects fetched from the database will have fields with null values
  */
-@Getter
 @Data
 @Entity(name = "people")
 public class Person {
-
-    /**
-     * CREATE table people
-     * (
-     * id         INTEGER PRIMARY KEY AUTO_INCREMENT,
-     * first_name VARCHAR(64),
-     * last_name  VARCHAR(64),
-     * email      VARCHAR(64),
-     * phone      VARCHAR(11),
-     * birth_date DATE,
-     * address    VARCHAR(64)
-     * );
-     */
-
-    // Constructor
-    public Person() {
-    }
-
-    public Person(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +21,7 @@ public class Person {
     private String firstName;
 
     @Getter
+    @Column(name = "last_name")
     private String lastName;
 
     @Getter

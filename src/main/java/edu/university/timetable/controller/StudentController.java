@@ -2,7 +2,6 @@ package edu.university.timetable.controller;
 
 import edu.university.timetable.model.Student;
 import edu.university.timetable.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("/students")
 public class StudentController {
 
-    @Autowired
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
+
+    public StudentController(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     @GetMapping("")
     public List<Student> getStudentsWithPersonDetails() {

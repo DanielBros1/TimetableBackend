@@ -3,11 +3,7 @@ package edu.university.timetable.controller;
 
 import edu.university.timetable.model.StudentGroup;
 import edu.university.timetable.repository.StudentGroupRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,12 +11,24 @@ import java.util.List;
 @RequestMapping("/studentGroups")
 public class StudentGroupController {
 
-    @Autowired
-    private StudentGroupRepository studentGroupRepository;
+    private final StudentGroupRepository studentGroupRepository;
 
+    public StudentGroupController(StudentGroupRepository studentGroupRepository) {
+        this.studentGroupRepository = studentGroupRepository;
+    }
 
     @GetMapping("")
     public List<StudentGroup> getAllStudentGroups() {
         return studentGroupRepository.getAllStudentGroups();
+    }
+
+    @GetMapping("/student/{studentNumber}")
+    public List<StudentGroup> getStudentGroupsByStudentNumber(@PathVariable String studentNumber) {
+        return studentGroupRepository.getStudentGroupsByStudentNumber(studentNumber);
+    }
+
+    @PostMapping("")
+    public void addStudentGroup(@RequestBody StudentGroup studentGroup) {
+        studentGroupRepository.addStudentGroup(studentGroup.getStudent().getStudentNumber(), studentGroup.getGroup().getId());
     }
 }

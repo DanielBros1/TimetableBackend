@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public class PersonRepository {
 
-    // @Autowired - provides more fine-grained control over
-    // where and how autowiring should be accomplished.
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -22,11 +20,5 @@ public class PersonRepository {
 
     }
 
-//    // add a new person
-//    public int addPerson(Person person) {
-//        return jdbcTemplate.update("INSERT INTO people (first_name, last_name, email, phone) VALUES (?, ?, ?, ?)",
-//                person.getFirstName(), person.getLastName(), person.getEmail(), person.getPhone());
-//    }
 
-    // TODO: 28/04/2024 trigger - if one create a new student, a new person should be created
 }

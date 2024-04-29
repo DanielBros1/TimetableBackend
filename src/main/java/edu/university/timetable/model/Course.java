@@ -2,8 +2,6 @@ package edu.university.timetable.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import org.hibernate.event.internal.OnUpdateVisitor;
 
 @Data
 @Entity(name = "courses")

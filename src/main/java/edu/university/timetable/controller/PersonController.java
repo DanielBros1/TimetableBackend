@@ -22,9 +22,4 @@ public class PersonController {
         return personRepository.getAllPersons();
     }
 
-//    // add a new person
-//   @PostMapping("")
-//    public int addPerson(@RequestBody Person person) {
-//        return personRepository.addPerson(person);
-//    }
 }

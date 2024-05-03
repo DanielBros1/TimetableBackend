@@ -32,7 +32,7 @@ class StudentControllerTest {
     void testGetStudentsWithPersonDetails() throws Exception {
         Student student = new Student();
         student.setStudentNumber("1180005");
-        when(studentRepository.findStudentsWithPersonDetails()).thenReturn(Collections.singletonList(student));
+        when(studentRepository.getAllStudents()).thenReturn(Collections.singletonList(student));
 
         mockMvc.perform(get("/students"))
                 .andExpect(status().isOk())
@@ -45,7 +45,7 @@ class StudentControllerTest {
         Student student = new Student();
         student.setStudentNumber("1180005");
         student.setStatus("active");
-        when(studentRepository.findStudentsWithPersonDetails()).thenReturn(Collections.singletonList(student));
+        when(studentRepository.getAllStudents()).thenReturn(Collections.singletonList(student));
 
         mockMvc.perform(get("/students"))
                 .andExpect(status().isOk())
@@ -57,7 +57,7 @@ class StudentControllerTest {
     void testGetStudentByStudentNumber() throws Exception {
         Student student = new Student();
         student.setStudentNumber("123");
-        when(studentRepository.findByStudentNumber("123")).thenReturn(student);
+        when(studentRepository.getStudentByStudentNumber("123")).thenReturn(student);
 
         mockMvc.perform(get("/students/123"))
                 .andExpect(status().isOk())

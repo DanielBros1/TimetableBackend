@@ -28,7 +28,7 @@ public class CourseController {
     }
 
     @PostMapping("")
-    public int addCourse(@RequestBody Course course) {
-        return courseRepository.addCourse(course.getName(), course.getCoordinatorTeacher().getId(), course.getEcts());
+    public void addCourse(@RequestBody Course course) {
+        courseRepository.addCourse(course.getName(), course.getCoordinatorTeacher().getId(), course.getEcts());
     }
 }

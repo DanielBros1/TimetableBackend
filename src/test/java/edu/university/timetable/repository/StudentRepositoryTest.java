@@ -20,7 +20,7 @@ class StudentRepositoryTest {
 
     @Test
     void testFindStudentsWithPersonDetails() {
-        List<Student> students = studentRepository.findStudentsWithPersonDetails();
+        List<Student> students = studentRepository.getAllStudents();
 
         // Assert that the list is not empty
         assertNotNull(students);
@@ -29,14 +29,14 @@ class StudentRepositoryTest {
     @Test
     void testFindByStudentNumberReturnsNotNull() {
         String studentNumber = "1180013";
-        Student student = studentRepository.findByStudentNumber(studentNumber);
+        Student student = studentRepository.getStudentByStudentNumber(studentNumber);
 
         assertNotNull(student);
     }
     @Test
     void testFindByStudentNumberReturnsCorrectStudent() {
         String studentNumber = "1180013";
-        Student student = studentRepository.findByStudentNumber(studentNumber);
+        Student student = studentRepository.getStudentByStudentNumber(studentNumber);
 
         // print all student details
         System.out.println(student);

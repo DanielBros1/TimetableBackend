@@ -21,15 +21,16 @@ public class TeacherController {
     }
 
     @GetMapping("")
-    public List<Teacher> getTeachersWithPersonDetails() {
-        return teacherRepository.findTeachersWithPersonDetails();
+    public List<Teacher> getAllTeachers() {
+        return teacherRepository.getAllTeachers();
     }
 
     // get teacher by academic title
     @GetMapping("/academic-title/{id}")
     public List<Teacher> getTeachersByAcademicTitle(@PathVariable("id") int academicTitleId) {
-        return teacherRepository.findTeachersByAcademicTitle(academicTitleId);
+        return teacherRepository.getTeachersByAcademicTitle(academicTitleId);
     }
+
 
 
 }

@@ -3,10 +3,7 @@ package edu.university.timetable.controller;
 
 import edu.university.timetable.model.Group;
 import edu.university.timetable.repository.GroupRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +30,10 @@ public class GroupController {
     @GetMapping("/course/{courseId}")
     public List<Group> getGroupByCourseId(@PathVariable("courseId") int courseId) {
         return groupRepository.getGroupByCourseId(courseId);
+    }
+
+    @PostMapping("")
+    public void addGroup(@RequestBody Group group) {
+        groupRepository.addGroup(group.getCourse().getId(), group.getTeacher().getId(), group.getGroupNumber(), group.getDateStarted(), group.getDateFinished(), group.getDayOfWeek(), group.getType());
     }
 }

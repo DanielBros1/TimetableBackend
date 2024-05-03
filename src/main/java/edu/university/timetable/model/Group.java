@@ -13,7 +13,7 @@ public class Group {
 
 
     @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
     @ManyToOne

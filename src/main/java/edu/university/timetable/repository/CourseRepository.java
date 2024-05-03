@@ -19,9 +19,7 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     @Query("SELECT c FROM courses c JOIN FETCH c.coordinatorTeacher WHERE c.id = ?1")
     Course getCourseById(int id);
 
-    @Modifying
-    @Transactional
     @Query(value = "INSERT INTO courses (name, coordinator_teacher_id, ects) VALUES (:name, :coordinator_teacher_id, :ects)", nativeQuery = true)
-    int addCourse(@Param("name") String name, @Param("coordinator_teacher_id") int coordinator_teacher_id, @Param("ects") double ects);
+    void addCourse(String name, int coordinator_teacher_id, double ects);
 
 }

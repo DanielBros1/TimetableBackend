@@ -21,11 +21,11 @@ public class StudentController {
 
     @GetMapping("")
     public List<Student> getStudentsWithPersonDetails() {
-        return studentRepository.findStudentsWithPersonDetails();
+        return studentRepository.getAllStudents();
     }
 
     @GetMapping("/{studentNumber}")
     public Student getStudentByStudentNumber(@PathVariable("studentNumber") String studentNumber) {
-        return studentRepository.findByStudentNumber(studentNumber);
+        return studentRepository.getStudentByStudentNumber(studentNumber);
     }
 }
